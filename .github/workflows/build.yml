@@ -7,4 +7,4 @@ jobs:
             - name: pulling git repo
               uses: actions/checkout@v4
             - name: hello buddy
-              uses: echo "hello bro"
+              run: echo "hello bro"
