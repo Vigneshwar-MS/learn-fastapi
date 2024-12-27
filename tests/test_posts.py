@@ -2,20 +2,12 @@
 import pytest
 from app import schemas
 from app.config import settings
-from jsonschema import validate
+
 
 def test_get_all_posts(authorized_client, insert_post_data_in_db):
     res = authorized_client.get('/posts/')
     assert res.status_code == 200
     assert len(res.json()) == len(insert_post_data_in_db)
-    def validate_schema(post):
-        return schemas.PostResponse(**post)
-    
-    posts_map = map(validate_schema, res.json())
-    # posts = list(posts_map)
-    # print(posts)
-    # print('----------------')
-    # print(res.json())
     
 def test_unauthorized_user_get_post(client, insert_post_data_in_db):
     res = client.get('/posts/')
