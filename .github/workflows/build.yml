@@ -45,4 +45,11 @@ jobs:
           pip install pytest
           pytest
       - name: Run pylint on python files
-        run: git diff --name-only origin/main | grep '\.py$' | grep -vE '^(venv|.venv)/' | xargs pylint
+        run: |
+          files=$(git diff --name-only origin/main | grep '\.py$' | grep -vE '^(venv|.venv)/')
+          if [ -n "$files" ]; then
+            echo "$files" | xargs pylint
+          else
+            echo "No modified Python files. Running pylint on all files."
+            find . -name "*.py" -not -path "./venv/*" | xargs pylint
+          fi
