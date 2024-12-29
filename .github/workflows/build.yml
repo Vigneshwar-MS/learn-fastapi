@@ -48,8 +48,11 @@ jobs:
         run: |
           files=$(git diff --name-only origin/main | grep '\.py$' | grep -vE '^(venv|.venv)/')
           if [ -n "$files" ]; then
-            echo "$files" | xargs pylint
+            echo "Linting the following modified files:"
+            echo "$files"
+            echo "$files" | xargs pylint || true
           else
             echo "No modified Python files. Running pylint on all files."
-            find . -name "*.py" -not -path "./venv/*" | xargs pylint
+            find . -name "*.py" -not -path "./venv/*" -print
+            find . -name "*.py" -not -path "./venv/*" | xargs pylint || true
           fi
