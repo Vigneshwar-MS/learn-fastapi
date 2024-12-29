@@ -30,8 +30,6 @@ jobs:
     steps:
       - name: pulling git repo
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
       - name: Install python
         uses: actions/setup-python@v5
         with:
@@ -44,28 +42,8 @@ jobs:
         run: |
           pip install pytest
           pytest
-      - name: Debug Git Diff
-        run: |
-          echo "Current Branch:"
-          git branch --show-current
-          echo "Fetching Branches:"
-          git fetch --all
-          echo "Diff Files:"
-          git diff --name-only main
       - name: Run pylint on python files
         env:
           PYTHONPATH: ${{ github.workspace }}
         run: |
-          git fetch --all
-          files=$(git diff --name-only main | grep '\.py$' | grep -vE '^(venv|.venv)/')
-          echo "Found modified files:"
-          echo "$files"
-          if [ -n "$files" ]; then
-            echo "Linting the following modified files:"
-            echo "$files"
-            echo "$files" | xargs pylint || true
-          else
-            echo "No modified Python files. Running pylint on all files."
-            find . -name "*.py" -not -path "./venv/*" -print
-            find . -name "*.py" -not -path "./venv/*" | xargs pylint || true
-          fi
+          find . -name "*.py" -not -path "./venv/*" | xargs pylint
