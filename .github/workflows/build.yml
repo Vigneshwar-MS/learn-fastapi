@@ -51,13 +51,13 @@ jobs:
           echo "Fetching Branches:"
           git fetch --all
           echo "Diff Files:"
-          git diff --name-only origin/main
+          git diff --name-only main
       - name: Run pylint on python files
         env:
           PYTHONPATH: ${{ github.workspace }}
         run: |
           git fetch --all
-          files=$(git diff --name-only origin/main | grep '\.py$' | grep -vE '^(venv|.venv)/')
+          files=$(git diff --name-only main | grep '\.py$' | grep -vE '^(venv|.venv)/')
           echo "Found modified files:"
           echo "$files"
           if [ -n "$files" ]; then
