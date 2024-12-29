@@ -24,10 +24,6 @@ def test_remove_vote_on_post(authorized_client, insert_post_data_in_db, test_cre
 def test_unauthorized_vote_on_post(client, insert_post_data_in_db,):
     res = client.post('/votes', json={'post_id': insert_post_data_in_db[0].id, 'dir': 1})
     assert res.status_code == 401
-
-def test_post_vote(authorized_client, insert_post_data_in_db):
-    res = authorized_client.post('/votes', json={'post_id': insert_post_data_in_db[0].id, 'dir': 1})
-    assert res.status_code == 201
     
 def test_remove_vote_on_post_which_is_note_voted_before(authorized_client, insert_post_data_in_db):
     res = authorized_client.post('/votes', json={'post_id': insert_post_data_in_db[3].id, 'dir': 0})

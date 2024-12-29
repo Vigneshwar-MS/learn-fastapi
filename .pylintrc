@@ -1,0 +1,46 @@
+[MASTER]
+# A comma-separated list of package or module names from where C extensions may be loaded.
+extension-pkg-whitelist=
+
+# Add files or directories to the blacklist. They should be base names, not paths.
+ignore=CVS
+
+# Add files or directories matching the regex patterns to the blacklist. The regex matches against base names, not paths.
+ignore-patterns=
+
+[MESSAGES CONTROL]
+# Only show warnings with the listed confidence levels. Leave empty to show all. Valid levels: HIGH, INFERENCE, INFERENCE_FAILURE, UNDEFINED
+confidence=
+
+# Enable the message, report, category or checker with the given id(s). You can either give multiple identifier separated by comma (,) or put this option multiple times.
+enable=all
+
+# Disable the message, report, category or checker with the given id(s). You can either give multiple identifier separated by comma (,) or put this option multiple times (only if you want to disable messages). See the documentation for the list of available checkers.
+disable=
+    C0114,  # missing-module-docstring
+    C0115,  # missing-class-docstring
+    C0116,  # missing-function-docstring
+    not-callable,
+    too-few-public-methods
+
+[REPORTS]
+# Set the output format. Available formats are text, parseable, colorized, json, json-with-metadata, msvs (visual studio) and html
+output-format=html
+
+# Tells whether to display a full report or only the messages
+reports=yes
+
+[FORMAT]
+# Maximum number of characters on a single line.
+max-line-length=100
+
+# String used as indentation unit. This is usually "    " (4 spaces) or "\t" (1 tab).
+indent-string='    '
+
+[DESIGN]
+# Maximum number of arguments for function / method
+max-args=5
+
+[TYPECHECK]
+# List of decorators that produce context managers, such as contextlib.contextmanager. Add to this list to register other decorators that produce valid context managers.
+contextmanager-decorators=contextlib.contextmanager

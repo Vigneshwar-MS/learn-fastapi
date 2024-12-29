@@ -87,7 +87,7 @@ def insert_post_data_in_db(user_create, user_create2, session):
         
     post_map = map(create_post, post_data)
     posts = list(post_map)
-    session.add_all(posts);
+    session.add_all(posts)
     
     session.commit()
     get_posts = session.query(models.Post).all()
