@@ -1,11 +1,13 @@
 alembic==1.13.3
 annotated-types==0.7.0
 anyio==4.6.0
+astroid==3.3.8
 attrs==24.2.0
 autopep8==2.3.1
 bcrypt==4.2.0
 certifi==2024.8.30
 click==8.1.7
+dill==0.3.9
 dnspython==2.6.1
 email_validator==2.2.0
 exceptiongroup==1.2.2
@@ -18,6 +20,7 @@ httptools==0.6.1
 httpx==0.27.2
 idna==3.10
 iniconfig==2.0.0
+isort==5.13.2
 itsdangerous==2.2.0
 Jinja2==3.1.4
 jsonschema==4.23.0
@@ -25,10 +28,12 @@ jsonschema-specifications==2024.10.1
 Mako==1.3.5
 markdown-it-py==3.0.0
 MarkupSafe==2.1.5
+mccabe==0.7.0
 mdurl==0.1.2
 orjson==3.10.7
 packaging==24.1
 passlib==1.7.4
+platformdirs==4.3.6
 pluggy==1.5.0
 psycopg2-binary==2.9.9
 pycodestyle==2.12.1
@@ -38,6 +43,8 @@ pydantic-settings==2.5.2
 pydantic_core==2.23.4
 Pygments==2.18.0
 PyJWT==2.9.0
+pylint==3.3.3
+pylint-sqlalchemy==0.3.0
 pytest==8.3.3
 python-dotenv==1.0.1
 python-multipart==0.0.12
@@ -50,6 +57,7 @@ sniffio==1.3.1
 SQLAlchemy==2.0.35
 starlette==0.38.6
 tomli==2.0.2
+tomlkit==0.13.2
 typer==0.12.5
 typing_extensions==4.12.2
 ujson==5.10.0
