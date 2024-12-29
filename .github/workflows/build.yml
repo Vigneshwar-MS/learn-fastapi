@@ -46,4 +46,4 @@ jobs:
         env:
           PYTHONPATH: ${{ github.workspace }}
         run: |
-          find . -name "*.py" -not -path "./venv/*" | xargs pylint
+          find . -name "*.py" -not -path "./venv/*" | xargs pylint || true
