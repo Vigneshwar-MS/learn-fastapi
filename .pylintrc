@@ -25,7 +25,7 @@ disable=
 
 [REPORTS]
 # Set the output format. Available formats are text, parseable, colorized, json, json-with-metadata, msvs (visual studio) and html
-output-format=html
+output-format=text
 
 # Tells whether to display a full report or only the messages
 reports=yes
