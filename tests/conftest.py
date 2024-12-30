@@ -55,7 +55,7 @@ def user_create2(client):
     response = client.post("/users", json=test_user_data)
     assert response.status_code == 201
     new_user = response.json()
-    new_user['password'] = test_user_data['password'] 
+    new_user['password'] = test_user_data['password']
     # print(new_user)
     return new_user
 

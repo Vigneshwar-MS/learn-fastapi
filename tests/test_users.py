@@ -68,3 +68,18 @@ def test_incorrect_login(client, user_create, email, password, status_code):
   assert response.status_code == status_code
 
     
+def test_create_user_existing_email(client, user_create):
+    client.post("/users/", json={"email": "t4@test.com", "password":"1234"})
+    response = client.post("/users/", json={"email": "t4@test.com", "password":"1234"})
+    assert response.status_code == 400
+
+def test_get_user_by_id(client, user_create):
+    user_id = user_create['id']
+    response = client.get(f"/users/{user_id}")
+    assert response.status_code == 200
+    user = schemas.UserResponse(**response.json())
+    assert user.email == user_create['email']
+
+def test_get_user_by_non_existent_id(client):
+    response = client.get("/users/999")
+    assert response.status_code == 404
